@@ -107,13 +107,6 @@ namespace Iot.Device.Lufft.Shm31.ModbusRtu
             return false;
         }
 
-        public static float AdjustValue_ScaleFactor(short regValue, short scaleFactor)
-        {
-            return regValue / scaleFactor;
-        }
-
-        // TODO: convert short to ushort for most regs.
-
         public static uint GetValueAsUInt32(ushort lowerValue, ushort upperValue)
         {
             // TODO: switch to Iot.Device.Modbus.Util

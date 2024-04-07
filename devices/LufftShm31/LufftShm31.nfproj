@@ -21,8 +21,11 @@
     <Compile Include="ModbusRtu\DebugHelper.cs" />
     <Compile Include="DeviceErrorCode.cs" />
     <Compile Include="HeatingModes.cs" />
+    <Compile Include="ModbusRtu\ModbusInputRegisterAddress.cs" />
     <Compile Include="ModbusRtu\LufftShm31ModbusRTU.cs" />
     <Compile Include="ModbusRtu\ModbusInputRegisters.cs" />
+    <Compile Include="ModbusRtu\ModbusInputRegisterType.cs" />
+    <Compile Include="ModbusRtu\ModbusRegisterValueType.cs" />
     <Compile Include="ModbusRtu\ModbusSensorAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatusCode.cs" />
