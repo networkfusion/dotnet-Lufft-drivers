@@ -343,9 +343,14 @@ namespace Iot.Device.Lufft.Shm31.ModbusRtu
 
     public class ModbusInputValue
     {
-        public short RawValue { get; set; } = short.MaxValue;
-        public float AdjustedValue { get; set; } = float.NaN;
+        public short RawValue { get; private set; } = short.MaxValue;
+        public float AdjustedValue { get; private set; } = float.NaN;
 
+        public ModbusInputValue(ushort regAddress, short rawValue)
+        {
+            RawValue = rawValue;
+            // TODO: convert the raw value to adjusted value
+        }
     }
 
     public class ModbusInputRegisters

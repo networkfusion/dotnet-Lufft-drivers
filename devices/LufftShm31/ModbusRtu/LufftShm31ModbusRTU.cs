@@ -19,7 +19,7 @@ namespace Iot.Device.Lufft.Shm31.ModbusRtu
 
         public byte DeviceId { get; private set; }
 
-        private readonly ModbusClient client;
+        private readonly ModbusClient client; // FIXME: technically modbus is RS485 only, so this should be added to the modbus client.
 
         private readonly ModbusInputRegisters inputRegisters;
 
@@ -38,24 +38,35 @@ namespace Iot.Device.Lufft.Shm31.ModbusRtu
         //    client.Dispose();
         //}
 
+        public short ReadRegisterRaw(ModbusInputRegisterAddress address)
+        {
+            var val = client.ReadInputRegisters(DeviceId, (ushort)address, 1);
+            return val[0];
+        }
+
         public short[] ReadAllRegistersRaw()
         {
             // TODO: is there a way to check if the read has happened successfully!? probably returns null...
             // read and return all (0..119) registers on the device.
-            return client.ReadInputRegisters(DeviceId, 0, ModbusInputRegisters.REG_ADDRESS_MAX); // TODO: use the ModbusInputRegisterAddress enum count.
+            return ReadSequentialRegisterRangeRaw(0, ModbusInputRegisters.REG_ADDRESS_MAX);
         }
 
-        public short[] ReadNormalRegistersRaw()
+        public short[] ReadRegisterTypeRaw(ModbusInputRegisterType regType)
+        {
+            // TODO: is there a way to check if the read has happened successfully!? probably returns null...
+
+            return ReadSequentialRegisterRangeRaw(
+                ModbusInputRegisterTypes.GetStartAddress(regType),
+                ModbusInputRegisterTypes.GetEndAddress(regType)
+                );
+        }
+
+        public short[] ReadSequentialRegisterRangeRaw(ushort fromAddress, ushort toAddress)
         {
             // TODO: is there a way to check if the read has happened successfully!? probably returns null...
             // read and return the info and standard measurements
-            return client.ReadInputRegisters(
-                DeviceId, 
-                ModbusInputRegisterTypes.GetStartAddress(ModbusInputRegisterType.StatusInformation),
-                ModbusInputRegisterTypes.GetEndAddress(ModbusInputRegisterType.StandardMetric)
-                );
-            // TODO: add the snow flag:
-            //short[] regsRead = client.ReadInputRegisters(DeviceId, 95, 1);
+            // TODO: some error checking is needed, like making sure the to reg is not larger than the from reg.
+            return client.ReadInputRegisters( DeviceId, fromAddress, toAddress );
         }
 
         public bool PerformAction(ModbusSensorAction actionRegister)
