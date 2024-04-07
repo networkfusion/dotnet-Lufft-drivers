@@ -390,77 +390,77 @@ namespace Iot.Device.Lufft.Shm31.ModbusRtu
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SI_BlockHeatingState,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.StatusInformation },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 7 } // FIXME: Max should be the count of HeatingModeState
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)HeatingModeState.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SI_WindowHeatingState,
                 new ModbusInputRegister
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SI_WindowHeatingState,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.StatusInformation },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 7 } // FIXME: Max should be the count of StatusCode
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)HeatingModeState.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SI_BlockTemperatureStatus,
                 new ModbusInputRegister
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SI_BlockTemperatureStatus,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.StatusInformation },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 0xFF } // FIXME: Max should be the count of StatusCode
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)StatusCode.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SI_AmbientTemperatureStatus,
                 new ModbusInputRegister
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SI_AmbientTemperatureStatus,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.StatusInformation },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 0xFF } // FIXME: Max should be the count of StatusCode
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)StatusCode.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SI_LaserTemperatureStatus,
                 new ModbusInputRegister
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SI_LaserTemperatureStatus,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.StatusInformation },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 0xFF } // FIXME: Max should be the count of StatusCode
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)StatusCode.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SI_TiltAngleStatus,
                 new ModbusInputRegister
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SI_TiltAngleStatus,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.StatusInformation },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 0xFF } // FIXME: Max should be the count of StatusCode
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)StatusCode.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SI_SnowHeightStatus,
                 new ModbusInputRegister
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SI_SnowHeightStatus,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.StatusInformation },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 0xFF } // FIXME: Max should be the count of StatusCode
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)StatusCode.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SI_DistanceStatus,
                 new ModbusInputRegister
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SI_DistanceStatus,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.StatusInformation },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 0xFF } // FIXME: Max should be the count of StatusCode
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)StatusCode.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SI_NormalizedSignalStatus,
                 new ModbusInputRegister
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SI_NormalizedSignalStatus,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.StatusInformation },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 0xFF } // FIXME: Max should be the count of StatusCode
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)StatusCode.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SI_ErrorCode,
                 new ModbusInputRegister
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SI_ErrorCode,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.StatusInformation },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 0xFF } // FIXME: Max should be the count of DeviceErrorCode
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)DeviceErrorCode.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SI_ErrorCode_Current,
                 new ModbusInputRegister
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SI_ErrorCode_Current,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.StatusInformation },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 0xFF } // FIXME: Max should be the count of DeviceErrorCode
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)DeviceErrorCode.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SI_AccumulatedOpperatingTimeLower,
                  new ModbusInputRegister
@@ -1057,7 +1057,7 @@ namespace Iot.Device.Lufft.Shm31.ModbusRtu
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SC_BlockHeatingState,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.ServiceChannels },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 7 }  // FIXME: Max should be the count of HeatingModeState
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)Shm31.HeatingModeState.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SC_InternalTemperatureDegC_NTC,
                 new ModbusInputRegister
@@ -1080,7 +1080,7 @@ namespace Iot.Device.Lufft.Shm31.ModbusRtu
                 {
                     RegisterAddress = ModbusInputRegisterAddress.SC_WindowHeatingState,
                     RegisterType = new() { RegisterType = ModbusInputRegisterType.ServiceChannels },
-                    ValueRange = new() { MinimumValue = 0, MaximumValue = 7 }  // FIXME: Max should be the count of HeatingModeState
+                    ValueRange = new() { MinimumValue = 0, MaximumValue = (int)Shm31.HeatingModeState.UnknownError - 1 }
                 });
             InputRegisters.Add((ushort)ModbusInputRegisterAddress.SC_ExternalTemperatureDegC_NTC,
                 new ModbusInputRegister
