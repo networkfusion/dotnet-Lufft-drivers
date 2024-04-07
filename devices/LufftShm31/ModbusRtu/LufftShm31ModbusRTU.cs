@@ -38,6 +38,13 @@ namespace Iot.Device.Lufft.Shm31.ModbusRtu
         //    client.Dispose();
         //}
 
+        public float ReadRegister(ModbusInputRegisterAddress address)
+        {
+            // FIXME: return a proper value.
+            ModbusInputValue val = new ModbusInputValue((ushort)address, ReadRegisterRaw(address));
+            return val.AdjustedValue;
+        }
+
         public short ReadRegisterRaw(ModbusInputRegisterAddress address)
         {
             var val = client.ReadInputRegisters(DeviceId, (ushort)address, 1);

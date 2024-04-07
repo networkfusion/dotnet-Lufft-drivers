@@ -135,6 +135,9 @@ namespace Iot.Device.Lufft.Shm31.ModbusRtu
         }
     }
 
+    /// <summary>
+    /// The value type of the <see cref="ModbusInputRegisterAddress"/>.
+    /// </summary>
     public enum ModbusRegisterValueType : byte
     {
         /// <summary>
@@ -349,7 +352,8 @@ namespace Iot.Device.Lufft.Shm31.ModbusRtu
         public ModbusInputValue(ushort regAddress, short rawValue)
         {
             RawValue = rawValue;
-            // TODO: convert the raw value to adjusted value
+            // TODO: convert the raw value to adjusted value using InputAddress hashtable.
+            //  make sure the value range, scale factor and type are used during the conversion.
         }
     }
 
